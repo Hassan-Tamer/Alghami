@@ -12,7 +12,7 @@ These instructions will help you get your project up and running on your local m
 1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/yourusername/your-repo.git
-   cd ALGHAMI
+   cd Alghami
    pip install -r requirements.txt
    streamlit run pred.py
     ```
