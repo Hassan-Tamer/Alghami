@@ -2,14 +2,8 @@ from torchvggish import vggish, vggish_input
 import torch
 import torch.nn.functional as F
 import streamlit as st
-from scipy.io import wavfile
 import wave
-import soundfile as sf
 from pydub import AudioSegment
-
-
-
-
 
 class NN_model(torch.nn.Module):
         def _init_(self,input_size,hidden1_size,hidden2_size,hidden3_size,hidden4_size,hidden5_size,output_size):
@@ -58,12 +52,13 @@ def predict(pred_path):
     print(classes[pred[0]])
     return classes[pred[0]]
 
-st.title("Music Genre Classifier")
+# st.write('<span style="color: white; font-size: 48px;">ALGHAMI</span>', unsafe_allow_html=True)
+st.write("<h1 style='color: purple;'>ALGHAMI Music Genre Classifier</h1>", unsafe_allow_html=True)
 
-# Create a file uploader
+# st.title("Music Genre Classifier")
+
 uploaded_file = st.file_uploader("Upload a WAV File", type=["wav"])
 
-# Function to display information about the WAV file
 def display_wav_info(file):
     if file is not None:
         with st.spinner("Analyzing..."):
@@ -72,7 +67,7 @@ def display_wav_info(file):
                 wavv = AudioSegment.from_wav(file)
                 wavv.export("file.wav", format="wav")
                 cls = predict("file.wav")
-                st.write('<span style="color: red; font-size: 24px;">The genre of the song is: ' + cls + '🎉' + '</span>', unsafe_allow_html=True)
+                st.write('<span style="color: red; font-size: 24px;">The genre of the song is: ' + cls + ' 🎉' + '</span>', unsafe_allow_html=True)
                 num_channels = wav.getnchannels()
                 sample_width = wav.getsampwidth()
                 frame_rate = wav.getframerate()
@@ -88,5 +83,4 @@ def display_wav_info(file):
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
 
-# Display the WAV file information
 display_wav_info(uploaded_file)
