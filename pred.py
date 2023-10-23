@@ -30,7 +30,6 @@ def predict(pred_path):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     mod = torch.load("best.pth")    
 
-
     embedding_model = vggish()
     embedding_model.eval()
 
@@ -53,10 +52,7 @@ def predict(pred_path):
     # print((torch.exp(out), 1))
     return classes[pred[0]]
 
-# st.write('<span style="color: white; font-size: 48px;">ALGHAMI</span>', unsafe_allow_html=True)
 st.write("<h1 style='color: purple;'>ALGHAMI Music Genre Classifier</h1>", unsafe_allow_html=True)
-
-# st.title("Music Genre Classifier")
 
 uploaded_file = st.file_uploader("Upload a WAV File", type=["wav"])
 
