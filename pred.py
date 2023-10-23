@@ -27,8 +27,8 @@ class NN_model(torch.nn.Module):
         
 
 def predict(pred_path):
-    mod = torch.load("best.pth")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    mod = torch.load("best.pth")    
 
 
     embedding_model = vggish()
