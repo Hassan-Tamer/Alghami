@@ -1,3 +1,9 @@
+## Introduction
+Music genre classification aims to automatically categorize music tracks into predefined genre labels
+
+## Dataset
+For this project, we use a publicly available music dataset, such as the [GTZAN dataset](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification)
+
 ## Getting Started
 
 These instructions will help you get your project up and running on your local machine.
