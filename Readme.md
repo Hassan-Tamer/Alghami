@@ -24,7 +24,7 @@ These instructions will help you get your project up and running on your local m
     ```
 ### Running the Application
 ```bash
-streamlit run pred.py
+python -m streamlit run pred.py
 ```
 
 2. Open a web browser and navigate to the URL displayed in the terminal (usually http://localhost:8501).
