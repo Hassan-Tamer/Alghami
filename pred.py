@@ -50,6 +50,7 @@ def predict(pred_path):
     pred = (torch.max(torch.exp(out), 1)[1]).data.cpu().numpy()
     classes = ("blues" , "classical" , "country" , "disco" , "hiphop" , "jazz" , "metal" , "pop" , "reggae" , "rock")
     print(classes[pred[0]])
+    # print((torch.exp(out), 1))
     return classes[pred[0]]
 
 # st.write('<span style="color: white; font-size: 48px;">ALGHAMI</span>', unsafe_allow_html=True)
@@ -65,6 +66,9 @@ def display_wav_info(file):
             try:
                 wav = wave.open(file)
                 wavv = AudioSegment.from_wav(file)
+                if len(wavv) > 31_000:
+                    wavv = wavv[60_000:90_000]
+
                 wavv.export("file.wav", format="wav")
                 cls = predict("file.wav")
                 st.write('<span style="color: red; font-size: 24px;">The genre of the song is: ' + cls + ' 🎉' + '</span>', unsafe_allow_html=True)
